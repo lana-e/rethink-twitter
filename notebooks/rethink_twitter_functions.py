@@ -177,7 +177,7 @@ def search_7(query, start_date=None, end_date=None, max_results=20, write_csv=Fa
 
 # function to search Tweets within the past 30 days
 # utilizes both API v1.1 and v2 to be consistent with 7-day search.
-def search_30(query, start_date=None, end_date=None, max_results=20, write_csv=False, filename="search_30.csv"):
+def search_30(query, start_date=None, end_date=None, max_results=20, write_csv=False, filename="search_30.csv", label="30day"):
     
     # if max_results is large, warn user of large number of API calls
     if max_results > 1000:
@@ -207,7 +207,7 @@ def search_30(query, start_date=None, end_date=None, max_results=20, write_csv=F
     import tweepy
     import math
     response_1 = tweepy.Cursor(api_1.search_30_day,
-                               label="30day",
+                               label=label,
                                query=f"{query} lang:en",
                                fromDate=start_date,
                                toDate=end_date,
@@ -262,7 +262,7 @@ def search_30(query, start_date=None, end_date=None, max_results=20, write_csv=F
 
 # function to search Tweets within the full Tweet archive
 # utilizes both API v1.1 and v2 to be consistent with 7-day search.
-def search_full(query, start_date=None, end_date=None, max_results=20, write_csv=False, filename="search_full.csv"):
+def search_full(query, start_date=None, end_date=None, max_results=20, write_csv=False, filename="search_full.csv", label="full"):
     
     # if max_results is large, warn user of large number of API calls
     if max_results > 1000:
@@ -292,7 +292,7 @@ def search_full(query, start_date=None, end_date=None, max_results=20, write_csv
     import tweepy
     import math
     response_1 = tweepy.Cursor(api_1.search_full_archive,
-                               label="full",
+                               label=label,
                                query=f"{query} lang:en",
                                fromDate=start_date,
                                toDate=end_date,
